@@ -3,10 +3,11 @@ class DogsController < ApplicationController
   end
 
   def fetch_dog
-  	DOG_API_BASE_URI = 'https://dog.ceo/api'
+  	breed = params[:breed].downcase
   	uri = URI("https://dog.ceo/api/breed/#{breed}/images/random")
     response = Net::HTTP.get(uri)
-
-    JSON.parse(response)
+    parsed_response = JSON.parse(response)
+    @image = parsed_response["message"]
+    @status = parsed_response["status"]
   end
 end

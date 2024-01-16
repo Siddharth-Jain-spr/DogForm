@@ -12,8 +12,5 @@ export default class extends Controller {
         Accept: "text/vnd.turbo-stream.html"
       }
     })
-    .then(response => response.text())
-    .then(html => Turbo.renderStreamMessage(html))
-
   }
 }
