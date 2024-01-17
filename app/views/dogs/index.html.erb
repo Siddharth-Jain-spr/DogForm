@@ -1,14 +1,21 @@
 <div class="container mt-5">
-  <div>
-    <h1>Dog Breed Form</h1>
-    <%= form_with(id: 'dogForm', data: {controller: "hello" }) do |form| %>
-      <div class="mb-3">
-        <%= form.label 'breed', 'Breed' %>
-        <%= form.text_field 'breed', class: 'form-control', id: 'breedInput' %>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Dog Breed Form</h1>
+      <%= form_with(id: 'dogForm', data: {controller: "hello" }, html: {onsubmit: "return false;"}, url: nil ) do |form| %>
+        <div class="mb-3">
+          <%= form.label 'breed', 'Breed' %>
+          <%= form.text_field 'breed', class: 'form-control', id: 'breedInput' %>
+        </div>
+        <br>
+        <%= form.submit 'Submit', class: 'btn btn-primary', data: {action: "click->hello#fetch_image"} %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="col-md-6">
+        <%= turbo_frame_tag "resultFrame" do %> 
+        <% end %>
       </div>
-      <br>
-      <%= form.submit 'Submit', class: 'btn btn-primary', data: {action: "click->hello#fetch_image"} %>
-    <% end %>
+    </div>
   </div>
-  <div class="mt-3" id="resultContainer" data-turbo-frame="resultFrame"></div>
 </div>

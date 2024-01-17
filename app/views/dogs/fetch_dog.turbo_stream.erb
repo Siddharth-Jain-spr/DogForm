@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "resultFrame" do %>
+  <%= turbo_frame_tag "resultFrame" do %> 
+    <div id="image">
+      <% if @status == 'success' %>
+        <img src="<%= @image %>" alt="Fetched Dog Image" class="img-fluid">
+      <% else %>
+        <p>Sorry the Breed does not exist.</p>
+      <% end %>
+    </div>  
+  <% end %>
+<%end%>
