@@ -3,9 +3,6 @@ class DogsController < ApplicationController
   end
 
   def fetch_dog
-  	breed = params[:breed].downcase
-    response = DogApi.fetch_image(params[:breed])
-    @image = response["message"]
-    @status = response["status"]
+    @response = DogApi.fetch_image(params[:breed].to_s.downcase)
   end
 end
